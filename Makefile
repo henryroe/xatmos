@@ -1,4 +1,3 @@
-.PHONY: clean-pyc clean-build docs clean
 
 help:
 	@echo "clean-build - remove build artifacts"
@@ -25,33 +24,19 @@ clean-pyc:
 	find . -name '*~' -exec rm -f {} +
 
 lint:
-	flake8 xatmos tests
-
-test:
-	python setup.py test
-
-test-all:
-	tox
+	flake8 xatmos 
 
 coverage:
-	coverage run --source xatmos setup.py test
+	coverage run --source xatmos setup.py 
 	coverage report -m
 	coverage html
 	open htmlcov/index.html
 
-docs:
-	rm -f docs/xatmos.rst
-	rm -f docs/modules.rst
-	sphinx-apidoc -o docs/ xatmos
-	$(MAKE) -C docs clean
-	$(MAKE) -C docs html
-	open docs/_build/html/index.html
-
 release: clean
 	python setup.py sdist upload
-	python setup.py bdist_wheel upload
+	python setup.py bdist upload
 
 dist: clean
 	python setup.py sdist
-	python setup.py bdist_wheel
+	python setup.py bdist
 	ls -l dist

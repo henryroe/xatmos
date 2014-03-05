@@ -14,7 +14,7 @@ if sys.argv[-1] == 'publish':
     os.system('python setup.py sdist upload')
     sys.exit()
 
-readme = open('README.rst').read()
+readme = open('README.md').read()
 history = open('HISTORY.rst').read().replace('.. :changelog:', '')
 
 setup(
@@ -29,8 +29,14 @@ setup(
         'xatmos',
     ],
     package_dir={'xatmos': 'xatmos'},
+    package_data = {'xatmos': ['atmos.txt.gz', 'hitran*txt.gz', 'orders.txt']},
     include_package_data=True,
-    install_requires=[
+    install_requires=['numpy>=1.6.1',
+                      'pandas',
+                      'pyface',
+                      'traits',
+                      'traitsui',
+                      'matplotlib'
     ],
     license='LICENSE.txt',
     zip_safe=False,
@@ -43,8 +49,5 @@ setup(
         "Programming Language :: Python :: 2",
         'Programming Language :: Python :: 2.6',
         'Programming Language :: Python :: 2.7',
-        'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.3',
     ],
-    test_suite='tests',
 )

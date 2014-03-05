@@ -1,0 +1,43 @@
+These are notes that are NOT to be distributed with package. 
+
+They are just some breadcrumbs to myself on how to re-build/install/upload etc.
+
+To build/clean-up use `make` commands, e.g.:
+
+    make clean
+    make dist
+    
+For testing:
+
+    make dist
+    cd dist
+    tar -xzvf xatmos-0.1.0.tar.gz
+    cd xatmos-0.1.0
+    python setup.py install
+    # and, then test it out:
+    python -c "import xatmos"
+    
+----
+
+To set up a virtual environment using the canopy tools:
+
+    cd ~/Dropbox/py/xatmos
+    /Applications/Canopy.app/Contents/MacOS/Canopy_cli venv xatmos_venv
+
+To activate:
+    
+    source ~/Dropbox/py/xatmos/xatmos_venv/bin/activate
+    
+To deactivate:
+
+    deactivate
+    
+In the venv, need to install the various packages for testing:
+
+    pip install numpy
+    pip install pandas
+    pip install pyface
+    pip install traits    # wasn't actually needed, b/c pyface
+    pip install traitsui
+    pip install matplotlib  # failing here and probably not getting time to get back to it.
+    
